@@ -1,0 +1,41 @@
+<html>
+
+  <head>
+	 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic">
+	 <link href="style.css" rel="stylesheet">
+	 <meta charset="windows-1251">
+	 <title>Canvas Example</title>
+  </head>
+  
+  <body>
+ <h1>MyPaint v 0.01</h1>
+<div class="header">
+<div id="usercolor" class="color default">Цвет</div>
+<div class="color red" onclick="changeColor('rgb(212,21,29)', this)"></div>
+<div class="color green" onclick="changeColor('rgb(131,190,61)', this)"></div>
+<div class="color blue" onclick="changeColor('rgb(0,86,166)', this)"></div>
+
+
+R<input id="R" type="text" size="5" value="0">
+G<input id="G" type="text" size="5" value="0">
+B<input id="B" type="text" size="5" value="0">
+
+<button onClick="userColor()">Определить цвет</button><br>
+<div class="square" onclick="rectDraw()"> Квадрат</div>
+</div> 
+
+<div class="header">
+<div class="square">’олщина</div>
+<div class="color" onclick="changeWidth(1, this)">1</div>
+<div class="color" onclick="changeWidth(5, this)">5</div>
+<div class="color" onclick="changeWidth(10, this)">10</div>
+</div>
+
+<form><button onClick="clear()">Очистить</button></form>
+
+  
+ <canvas id='example'></canvas>
+	
+ <script src="script.js"></script>
+  </body>
+</html>
