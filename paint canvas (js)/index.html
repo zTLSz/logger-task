@@ -8,7 +8,7 @@
   </head>
   
   <body>
- <h1>MyPaint v 0.01</h1>
+ <h1>MyPaint</h1>
 <div class="header">
 <div id="usercolor" class="color default">÷вет</div>
 <div class="color red" onclick="changeColor('rgb(212,21,29)', this)"></div>
@@ -21,7 +21,9 @@ G<input id="G" type="text" size="5" value="0">
 B<input id="B" type="text" size="5" value="0">
 
 <button onClick="userColor()">ќпределить цвет</button><br>
-<div class="square" onclick="rectDraw()">  вадрат</div>
+<div class="square" onclick="rectDraw()">«аливка-прямоуг</div>
+<div class="square" onclick="setCircle()"> руг</div>
+<div class="square">Прозрачность:</div><input type="range" id="globalalpha" min="0" max="1" step="0.1" value="1" onchange="changeAlpha()">
 </div> 
 
 <div class="header">
