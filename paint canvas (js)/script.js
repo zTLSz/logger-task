@@ -88,7 +88,7 @@ function stopDraw(e) {  //сброс-остановка рисования
 		var rectx = Math.abs(x2-x1);
 		var recty = Math.abs(y2-y1);
 		
-	    if (x1 > x2 && y1 > y2) {  //4 вида прямоугольника взависимости от координат мышки
+	    if (x1 > x2 && y1 > y2) {  //4 вида прямоугольника в зависимости от координат мышки
 			ctx.fillRect(x2, y2, rectx, recty);
 		} else if (x1 > x2 && y1 < y2) {
 			ctx.fillRect(x2, y1, rectx, recty);
@@ -107,7 +107,7 @@ function clear() {
 	ctx.clearRect(1, 1, example.width, example.height);
 }
 
-function userColor() {
+function userColor() { //пользовательский цвет
 	var r = document.getElementById("R").value;
 	var g = document.getElementById("G").value;
 	var b = document.getElementById("B").value;
@@ -141,7 +141,7 @@ function setCircle() { //нажатие на кнопку Круг
 	isCircle = true;
 } 
 
-function addCircle() { //после нажатия, добавляем в массив новый круг
+function addCircle() { //после нажатия добавляем в массив новый круг
 	 var radius = 50;
 	 var circlecolor = ctx.strokeStyle;
 	 var circle = new Circle(xcircle, ycircle, radius, circlecolor);
@@ -175,7 +175,7 @@ function drawCircles() { //отрисовываем последний элем�
 
 
 
-function changeAlpha() {
+function changeAlpha() { //смена прозрачности
 	var alpha = document.getElementById("globalalpha").value;
 	ctx.globalAlpha = alpha;
 	
