@@ -2,10 +2,9 @@ var example;
 var ctx;
 var isStart = true;
 var isEaten = false;
-var snakes = [];
 var c, d;
-var x = 10;
-var y = 10;
+var x = 100;
+var y = 100;
 var dx = 0;
 var dy = 0;
 
@@ -39,7 +38,7 @@ function animateRect() {
 	ctx.clearRect(0, 0, example.width, example.height);
 	
 	for (var i=0; i < snake.length; i++) {
-    var s = snake[i];
+  var s = snake[i];
 	ctx.beginPath();
 	
 	ctx.rect(x-s.c, y-s.d, 10, 10);
@@ -77,41 +76,39 @@ function start() {
 
 document.onkeydown = function(e) {
 	if (e.keyCode == 40) {  //down
-    var xcurr = x;
-    var ycurr = y;
      dy = 10;
 	   dx = 0; 
-    snake[1].c = 0;
-    snake[1].d = 10;   
-    snake[2].c = 0;
-    snake[2].d = 20;
+   for (var j=1; j < snake.length; j++) {
+      snake[j].c = 0;
+      snake[j].d = j*10;
+    }
 	}
 	
 	if (e.keyCode == 38) { //up
 	   dy = -10;
 	   dx = 0;
-    snake[1].c = 0;
-    snake[1].d = 10;
-    snake[2].c = 0;
-    snake[2].d = 20;
+    for (var j=1; j < snake.length; j++) {
+      snake[j].c = 0;
+      snake[j].d = j*10;
+    }
 	}
 	
 	if (e.keyCode == 39) {
 	   dy = 0;
 	   dx = 10;
-    snake[1].c = 10;
-    snake[1].d = 0;
-    snake[2].c = 20;
-    snake[2].d = 0;
+     for (var j=1; j < snake.length; j++) {
+      snake[j].c = j*10;
+      snake[j].d = 0;
+    }
 	}
 	
 	if (e.keyCode == 37) {
 	   dy = 0;
 	   dx = -10;
-    snake[1].c = 10;
-    snake[1].d = 0;
-    snake[2].c = 20;
-    snake[2].d = 0;
+    for (var j=1; j < snake.length; j++) {
+      snake[j].c = j*10;
+      snake[j].d = 0;
+    }
 	}
 }
 
