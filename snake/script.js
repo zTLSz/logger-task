@@ -1,18 +1,15 @@
-﻿
 var example;
 var ctx;
 var isStart = true;
+var isEaten = false;
 var snakes = [];
-
+var c, d;
 var x = 10;
 var y = 10;
 var dx = 0;
 var dy = 0;
 
-var up = false, 
-down = true, 
-left = false, 
-right = false;
+
 
 window.onload = function() {
 	example = document.getElementById("example");
@@ -20,10 +17,19 @@ window.onload = function() {
 	ctx = example.getContext('2d');
     example.width  = 500;
     example.height = 500;
-	setTimeout(animateRect, 20);
+	setTimeout(animateRect, 200);
 }
 
-var snake = [0, 10];
+var snake = [{
+  c:0,
+  d:0
+}, {
+  c:10,
+  d:0
+}, {
+  c:20,
+  d:0
+}];
 
 
 
@@ -36,13 +42,13 @@ function animateRect() {
     var s = snake[i];
 	ctx.beginPath();
 	
-	ctx.rect(x-s, y-s, 10, 10);
+	ctx.rect(x-s.c, y-s.d, 10, 10);
 	ctx.lineStyle = "#109bfc";
 	ctx.lineWidth = 1;
 	ctx.stroke();
 	}
-	
-	
+  
+  
 	y += dy;
 	x += dx;
 	
@@ -50,10 +56,14 @@ function animateRect() {
 		y = 10;
 	}
 	
+  
 	if (isStart == true) {
-	setTimeout(animateRect, 20);
+	setTimeout(animateRect, 200);
 	}
 	
+  if (isEaten == false) {
+    setTimeout(getFood, 200);
+  }
 }
 
 function pause() {
@@ -66,24 +76,61 @@ function start() {
 }
 
 document.onkeydown = function(e) {
-	if (e.keyCode == 40) {
-	   dy = 10;
-	   dx = 0;
+	if (e.keyCode == 40) {  //down
+    var xcurr = x;
+    var ycurr = y;
+     dy = 10;
+	   dx = 0; 
+    snake[1].c = 0;
+    snake[1].d = 10;   
+    snake[2].c = 0;
+    snake[2].d = 20;
 	}
 	
-	if (e.keyCode == 38) {
+	if (e.keyCode == 38) { //up
 	   dy = -10;
 	   dx = 0;
+    snake[1].c = 0;
+    snake[1].d = 10;
+    snake[2].c = 0;
+    snake[2].d = 20;
 	}
 	
 	if (e.keyCode == 39) {
 	   dy = 0;
 	   dx = 10;
+    snake[1].c = 10;
+    snake[1].d = 0;
+    snake[2].c = 20;
+    snake[2].d = 0;
 	}
 	
 	if (e.keyCode == 37) {
 	   dy = 0;
 	   dx = -10;
+    snake[1].c = 10;
+    snake[1].d = 0;
+    snake[2].c = 20;
+    snake[2].d = 0;
 	}
 }
 
+function getFood() {
+  var xfood = 50;
+  var yfood = 50;
+  ctx.beginPath();
+  ctx.rect(xfood, yfood, 10, 10);
+  ctx.lineStyle = "#109bfc";
+	ctx.lineWidth = 1;
+	ctx.stroke();
+  
+  if (x == xfood && y == yfood) {
+    ctx.clearRect(xfood, yfood, 10, 10);
+    isEaten = true;
+    var s3 = {
+      c: 30,
+      d: 0
+    }
+    snake.push(s3);
+  }
+}
