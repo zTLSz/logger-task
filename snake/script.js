@@ -1,18 +1,14 @@
-﻿
-var example;
+﻿var example;
 var ctx;
 var isStart = true;
-var snakes = [];
-
-var x = 10;
-var y = 10;
+var isEaten = false;
+var c, d;
+var x = 100;
+var y = 100;
 var dx = 0;
 var dy = 0;
 
-var up = false, 
-down = true, 
-left = false, 
-right = false;
+
 
 window.onload = function() {
 	example = document.getElementById("example");
@@ -20,10 +16,19 @@ window.onload = function() {
 	ctx = example.getContext('2d');
     example.width  = 500;
     example.height = 500;
-	setTimeout(animateRect, 20);
+	setTimeout(animateRect, 200);
 }
 
-var snake = [0, 10];
+var snake = [{
+  c:0,
+  d:0
+}, {
+  c:10,
+  d:0
+}, {
+  c:20,
+  d:0
+}];
 
 
 
@@ -36,13 +41,13 @@ function animateRect() {
     var s = snake[i];
 	ctx.beginPath();
 	
-	ctx.rect(x-s, y-s, 10, 10);
+	ctx.rect(x-s.c, y-s.d, 10, 10);
 	ctx.lineStyle = "#109bfc";
 	ctx.lineWidth = 1;
 	ctx.stroke();
 	}
-	
-	
+  
+  
 	y += dy;
 	x += dx;
 	
@@ -50,40 +55,99 @@ function animateRect() {
 		y = 10;
 	}
 	
+  
+  
 	if (isStart == true) {
-	setTimeout(animateRect, 20);
+	setTimeout(animateRect, 200);
 	}
 	
+    if (isEaten == false) {
+    setTimeout(getFood, 200);
+    }
+  
 }
 
 function pause() {
 	isStart = false;
 }
 
+
 function start() {
 	isStart = true;
 	setTimeout(animateRect, 20);
 }
 
+
 document.onkeydown = function(e) {
-	if (e.keyCode == 40) {
-	   dy = 10;
-	   dx = 0;
+	if (e.keyCode == 40) {  //down
+     dy = 10;
+	   dx = 0; 
+   for (var j=1; j < snake.length; j++) {
+      snake[j].c = 0;
+      snake[j].d = j*10;
+    }
 	}
 	
-	if (e.keyCode == 38) {
+	if (e.keyCode == 38) { //up
 	   dy = -10;
 	   dx = 0;
+    for (var j=1; j < snake.length; j++) {
+      snake[j].c = 0;
+      snake[j].d = j*10;
+    }
 	}
 	
 	if (e.keyCode == 39) {
 	   dy = 0;
 	   dx = 10;
+     for (var j=1; j < snake.length; j++) {
+      snake[j].c = j*10;
+      snake[j].d = 0;
+    }
 	}
 	
 	if (e.keyCode == 37) {
 	   dy = 0;
 	   dx = -10;
+    for (var j=1; j < snake.length; j++) {
+      snake[j].c = j*10;
+      snake[j].d = 0;
+    }
 	}
 }
 
+
+
+function Construct() {
+	this.xfood = Math.round((Math.random() * (450 - 10) + 10) / 10) * 10;
+	this.yfood = Math.round((Math.random() * (450 - 10) + 10) / 10) * 10;
+}
+
+Construct();
+
+function getFood() {
+ 
+  ctx.beginPath();
+  ctx.rect(xfood, yfood, 10, 10);
+  ctx.lineStyle = "#109bfc";
+	ctx.lineWidth = 1;
+	ctx.stroke();
+  
+  if (x == xfood && y == yfood) {
+	  
+    ctx.clearRect(xfood, yfood, 10, 10);
+	
+    isEaten = true;
+	
+    var s3 = {
+      c: 30,
+      d: 0
+    }
+	
+    snake.push(s3);
+	
+	Construct();
+	
+	isEaten = false;
+  }
+}
