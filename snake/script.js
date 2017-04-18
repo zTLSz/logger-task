@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 ﻿var example;
-=======
+
 var example;
->>>>>>> origin/master
+
 var ctx;
 var isStart = true;
 var isEaten = false;
