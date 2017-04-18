@@ -129,7 +129,7 @@ document.onkeydown = function(e) {
 	}
 }
 
-<<<<<<< HEAD
+
 
 
 function Construct() {
@@ -145,7 +145,7 @@ function getFood() {
 function getFood() {
   var xfood = 50;
   var yfood = 50;
->>>>>>> origin/master
+
   ctx.beginPath();
   ctx.rect(xfood, yfood, 10, 10);
   ctx.lineStyle = "#109bfc";
@@ -153,29 +153,29 @@ function getFood() {
 	ctx.stroke();
   
   if (x == xfood && y == yfood) {
-<<<<<<< HEAD
+
 	  
     ctx.clearRect(xfood, yfood, 10, 10);
 	
     isEaten = true;
 	
-=======
+
     ctx.clearRect(xfood, yfood, 10, 10);
     isEaten = true;
->>>>>>> origin/master
+
     var s3 = {
       c: 30,
       d: 0
     }
-<<<<<<< HEAD
+
 	
     snake.push(s3);
 	
 	Construct();
 	
 	isEaten = false;
-=======
+
     snake.push(s3);
->>>>>>> origin/master
+
   }
 }
