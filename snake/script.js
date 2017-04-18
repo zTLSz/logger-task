@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿var example;
+=======
+var example;
+>>>>>>> origin/master
 var ctx;
 var isStart = true;
 var isEaten = false;
@@ -38,7 +42,7 @@ function animateRect() {
 	ctx.clearRect(0, 0, example.width, example.height);
 	
 	for (var i=0; i < snake.length; i++) {
-    var s = snake[i];
+  var s = snake[i];
 	ctx.beginPath();
 	
 	ctx.rect(x-s.c, y-s.d, 10, 10);
@@ -56,15 +60,24 @@ function animateRect() {
 	}
 	
   
+<<<<<<< HEAD
   
+=======
+>>>>>>> origin/master
 	if (isStart == true) {
 	setTimeout(animateRect, 200);
 	}
 	
+<<<<<<< HEAD
     if (isEaten == false) {
     setTimeout(getFood, 200);
     }
   
+=======
+  if (isEaten == false) {
+    setTimeout(getFood, 200);
+  }
+>>>>>>> origin/master
 }
 
 function pause() {
@@ -116,6 +129,7 @@ document.onkeydown = function(e) {
 	}
 }
 
+<<<<<<< HEAD
 
 
 function Construct() {
@@ -127,6 +141,11 @@ Construct();
 
 function getFood() {
  
+=======
+function getFood() {
+  var xfood = 50;
+  var yfood = 50;
+>>>>>>> origin/master
   ctx.beginPath();
   ctx.rect(xfood, yfood, 10, 10);
   ctx.lineStyle = "#109bfc";
@@ -134,20 +153,29 @@ function getFood() {
 	ctx.stroke();
   
   if (x == xfood && y == yfood) {
+<<<<<<< HEAD
 	  
     ctx.clearRect(xfood, yfood, 10, 10);
 	
     isEaten = true;
 	
+=======
+    ctx.clearRect(xfood, yfood, 10, 10);
+    isEaten = true;
+>>>>>>> origin/master
     var s3 = {
       c: 30,
       d: 0
     }
+<<<<<<< HEAD
 	
     snake.push(s3);
 	
 	Construct();
 	
 	isEaten = false;
+=======
+    snake.push(s3);
+>>>>>>> origin/master
   }
 }
