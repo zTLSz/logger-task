@@ -1,11 +1,9 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+// const express = require('express');
+//const path = require('path');
+//const app = express();
 
-app.use(express.static(path.join(__dirname, 'dist')));
+require('server/main').listen(3000, () => {
+  logger.success('Server is running at http://localhost:3000')
+})
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-app.listen(9000);
+// app.listen(9000);
